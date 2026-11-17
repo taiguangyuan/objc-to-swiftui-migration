@@ -1,0 +1,4 @@
+legacy_file,legacy_type,feature,swiftui_destination,analysis_status,implementation_status,build_status,behavior_status,visual_status,notes
+ExampleViewController.m,objc,Example,ExampleView.swift,not-started,not-started,not-started,not-started,not-started,
+ExampleView.xib,xib,Example,ExampleView.swift,not-started,not-started,not-started,not-started,not-started,
+Main.storyboard,storyboard,AppNavigation,AppRouter.swift,not-started,not-started,not-started,not-started,not-started,
