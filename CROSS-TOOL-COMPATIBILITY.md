@@ -54,9 +54,9 @@ Environment-dependent:
 - Python availability and invocation path;
 - Xcode installation, simulator availability, and `xcodebuild`;
 - screenshot capture and visual-diff tools;
-- agent context retention and how reliably it pauses for approval.
+- agent context retention and how reliably it pauses for approval and for the pre-flight interrogation gate.
 
-The Skill's approval gate is an instruction-level workflow, not a cryptographic or operating-system permission boundary. For stronger protection, use Git commits/branches, review diffs, restrict write permissions where practical, and do not grant unattended execution permissions for destructive commands.
+Both gates — the pre-flight grill-me interrogation and the per-batch approval gate — are instruction-level workflows, not cryptographic or operating-system permission boundaries. They rely on the agent pausing for the user's answers; use structured prompts where the environment offers them, otherwise ask in plain text and wait. For stronger protection, use Git commits/branches, review diffs, restrict write permissions where practical, and do not grant unattended execution permissions for destructive commands.
 
 ## Recommended shared project layout
 

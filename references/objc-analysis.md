@@ -10,6 +10,8 @@ For each `.h` / `.m` pair, record:
 - all callers and construction sites;
 - delegate/data-source contracts;
 - notifications, KVO, target-action, selectors and blocks;
+- gestures: recognizer types and configurations, control events, delegate rules, dependencies and cancellation paths;
+- hard-coded `frame` / `bounds` / `center` assignments, `layoutSubviews` math, and manual coordinate calculations;
 - RAC signals, commands, schedulers, disposal and completion semantics;
 - network requests, request parameters, response parsing and error mapping;
 - persistence, caching, analytics and feature flags;
@@ -26,6 +28,8 @@ For each `.h` / `.m` pair, record:
 - Avoid force unwraps unless the invariant is proven and documented.
 - Preserve serialization keys and backend contracts explicitly with `CodingKeys` or custom decoding.
 - Audit retain cycles, timer invalidation, observer removal and request cancellation.
+- Translate hard-coded frames into native SwiftUI layout intent; never copy coordinates (see `SKILL.md`).
+- Preserve gesture operation logic exactly, including event phases, thresholds, failure/cancellation and recognizer competition; verify each path before completion.
 
 ## Lifecycle mapping
 
@@ -35,7 +39,10 @@ For each `.h` / `.m` pair, record:
 | `viewWillAppear` | `.onAppear` | can fire repeatedly |
 | `viewDidDisappear` | `.onDisappear` | not equivalent to deallocation |
 | layout callbacks | layout containers / `GeometryReader` | avoid geometry when constraints express intent |
+| hard-coded frame / `layoutSubviews` | layout containers + modifiers | translate intent; never copy coordinates |
 | target-action | `Button` / control action | preserve enabled and accessibility states |
+| gesture recognizer | native SwiftUI gesture modifiers | preserve phases, thresholds, cancellation and competition |
+| custom `hitTest` / raw touches | `contentShape` / `allowsHitTesting` | preserve hit area and fallthrough behavior |
 | delegate callbacks | closures, bindings, observable model, protocol | choose based on lifecycle and multiplicity |
 | KVO | observable model / publisher | avoid duplicate observation |
 | NotificationCenter | app-level event or observable state | scope and delivery semantics matter |

@@ -6,6 +6,10 @@
 
 ## Functional parity matrix
 
+## Gesture parity checks
+
+## Hard-coded frame review
+
 ## Visual comparison
 
 ## Accessibility checks

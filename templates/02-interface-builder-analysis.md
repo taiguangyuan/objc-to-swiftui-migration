@@ -14,6 +14,8 @@
 
 ## Assets, fonts and colors
 
+## Hard-coded frame usage in code (frame / bounds / center, layoutSubviews)
+
 ## Runtime-only behavior not represented in XML
 
 ## Proposed SwiftUI hierarchy
